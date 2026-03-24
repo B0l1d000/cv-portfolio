@@ -59,9 +59,9 @@ function typeTerminalText() {
     function typeChar() {
         if (i < coverLetterText.length) {
             if (coverLetterText.charAt(i) === '\n') {
-                textNode.innerHTML += '<br>';
+                textNode.appendChild(document.createElement('br'));
             } else {
-                textNode.innerHTML += coverLetterText.charAt(i);
+                textNode.appendChild(document.createTextNode(coverLetterText.charAt(i)));
             }
             i++;
             // Randomize typing speed for realism (10ms to 40ms)
