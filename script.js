@@ -84,3 +84,31 @@ cards.forEach(card => {
         card.style.setProperty('--mouse-y', `${y}px`);
     });
 });
+
+// Mobile navigation toggle
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-links');
+const navItemsMobile = document.querySelectorAll('.nav-item');
+const menuIcon = mobileMenu ? mobileMenu.querySelector('i') : null;
+
+if (mobileMenu && menuIcon) {
+    mobileMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        if (navLinks.classList.contains('active')) {
+            menuIcon.classList.remove('fa-bars');
+            menuIcon.classList.add('fa-xmark');
+        } else {
+            menuIcon.classList.remove('fa-xmark');
+            menuIcon.classList.add('fa-bars');
+        }
+    });
+
+    // Close menu when clicking an item
+    navItemsMobile.forEach(item => {
+        item.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            menuIcon.classList.remove('fa-xmark');
+            menuIcon.classList.add('fa-bars');
+        });
+    });
+}
